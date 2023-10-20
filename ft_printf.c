@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 14:44:55 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/06/22 14:58:05 by mmedeiro         ###   ########.fr       */
+/*   Created: 2023/10/20 12:34:21 by matlopes          #+#    #+#             */
+/*   Updated: 2023/10/20 14:51:32 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,13 @@ int	ft_printf(const char *str, ...)
 	while (*str)
 	{
 		if (*str == '%' && *str + 1)
-		{
 			counter += ft_conversions(*++str, arg);
-			str++;
-		}
 		else
 		{
 			write(1, &*str, 1);
-			str++;
 			counter++;
 		}
+		str++;
 	}
 	va_end(arg);
 	return (counter);

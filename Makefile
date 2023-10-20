@@ -1,28 +1,27 @@
 SRCS		= ft_printf.c ft_conversions.c ft_prints_pt1.c ft_prints_pt2.c
 
-OBJS		= ${SRCS:.c=.o}
+OBJS		= $(SRCS:.c=.o)
 
 NAME		= libftprintf.a
 
 AR			= ar rc
 CC			= cc
-FLAGS		= -Wall -Wextra -Werror -c
-RM			= rm -f
-O			= -o
+FLAGS		= -Wall -Wextra -Werror
+RM			= rm
 
 all:		$(NAME)
 
-.c.o:		${SRCS}
-			${CC} ${FLAGS} $< ${O} ${<:.c=.o}
+.c.o:
+			$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):	${OBJS}
-			${AR} $(NAME) ${OBJS}
+$(NAME):	$(OBJS)
+			$(AR) $(NAME) $(OBJS)
 
 clean:
-			${RM} ${OBJS}
+			$(RM) -f $(OBJS)
 
 fclean:		clean
-			${RM} ${NAME}
+			$(RM) -f $(NAME)
 
 re:			fclean all
 
